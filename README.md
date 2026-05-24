@@ -73,11 +73,11 @@ git submodule add https://github.com/gharikishore/vellum-kit.git .claude/kits/ve
 ### 3. Apply the Tailwind preset
 
 ```js
-// tailwind.config.js
-import vellumPreset from "./.claude/kits/vellum/tailwind-preset.js";
+// tailwind.config.js (CommonJS — works for legacy + modern setups)
+const vellumPreset = require("./.claude/kits/vellum/tailwind-preset.cjs");
 
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   presets: [vellumPreset],
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",

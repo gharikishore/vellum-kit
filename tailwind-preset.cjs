@@ -1,10 +1,14 @@
-// @gharikishore/vellum-kit — Tailwind preset.
+// @gharikishore/vellum-kit — Tailwind preset (CommonJS).
+//
+// CJS so legacy `tailwind.config.js` files (module.exports = …) can
+// require() it directly. ESM consumers can dynamic-import or use the
+// `tailwind-preset` package export.
 //
 // Consumers wire this in their tailwind.config.js:
 //
-//   import vellumPreset from "@gharikishore/vellum-kit/tailwind-preset";
+//   const vellumPreset = require("./.claude/kits/vellum/tailwind-preset.cjs");
 //   /** @type {import('tailwindcss').Config} */
-//   export default {
+//   module.exports = {
 //     presets: [vellumPreset],
 //     content: [
 //       "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -85,4 +89,4 @@ const preset = {
   },
 };
 
-export default preset;
+module.exports = preset;
