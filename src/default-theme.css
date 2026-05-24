@@ -1,0 +1,76 @@
+/* @gharikishore/vellum-kit — default theme.
+ *
+ * Vellum's design tokens as CSS variables. Consumers either import
+ * this file at the root layer:
+ *
+ *   @import "@gharikishore/vellum-kit/default-theme.css";
+ *
+ * …or define the same variables themselves to fully override the look.
+ * Mix-and-match works: import this file first, then override individual
+ * variables in your own globals.css.
+ *
+ * Naming convention: `--vellum-*`. The same color values are also
+ * available as Tailwind utility classes via the kit's tailwind-preset
+ * (e.g. `bg-cream`, `text-ink`, `border-hair`). Use whichever is
+ * more readable per context:
+ *   - inline style + arbitrary-value class → CSS var
+ *   - regular class composition → Tailwind utility
+ *
+ * Scope: ONLY visual tokens. Spacing + sizing + font-family + radii
+ * are intentionally NOT variables — those are structural and should
+ * stay consistent across consumers via tailwind-preset.js.
+ */
+
+:root {
+  /* ── Surfaces ─────────────────────────────────────────── */
+  /* Page background tone — Vellum cream. */
+  --vellum-cream: #f2ede4;
+  /* Card / aside / article container background. */
+  --vellum-card: #faf6ee;
+  /* Modal backdrop / scrim. */
+  --vellum-overlay: rgba(11, 18, 32, 0.6);
+
+  /* ── Foreground / text ──────────────────────────────── */
+  /* Primary ink — body text, headings. */
+  --vellum-ink: #1a1814;
+  /* Secondary text — paragraphs, descriptions. */
+  --vellum-text-muted: #3a3934;
+  /* Tertiary / hint text. */
+  --vellum-text-soft: #5a5750;
+
+  /* ── Hairlines ──────────────────────────────────────── */
+  --vellum-hair: rgba(26, 24, 20, 0.12);
+  --vellum-hair-strong: rgba(26, 24, 20, 0.2);
+
+  /* ── Accents ─────────────────────────────────────────── */
+  /* Action / primary CTA. */
+  --vellum-orange: #c5421b;
+  /* Pre-baked rgba of orange at 30% — focus rings + drop targets. */
+  --vellum-orange-ring: rgba(197, 66, 27, 0.3);
+  --vellum-navy: #1f3a5c;
+  /* Lighter navy — in-progress / "being built" states. */
+  --vellum-navy-soft: #3a6e9c;
+  --vellum-gold: #b8964f;
+  /* Dusty red-brown — disabled / "not applicable" markers. */
+  --vellum-dust: #a05a5a;
+
+  /* ── Status ─────────────────────────────────────────── */
+  --vellum-success: #226633;
+  --vellum-success-on: #ffffff;
+  --vellum-warning-fg: #7a6638;
+  --vellum-error-bg: #fde7e7;
+  --vellum-error-fg: #7a1f1f;
+
+  /* ── Inputs ─────────────────────────────────────────── */
+  --vellum-input-bg: #ffffff;
+  --vellum-input-border: rgba(26, 24, 20, 0.2);
+
+  /* ── Shadows ────────────────────────────────────────── */
+  /* Ultra-quiet 1px hairline; rarely needed. */
+  --vellum-shadow-soft: 0 1px 0 rgba(26, 24, 20, 0.04);
+  /* Default card shadow — two-layer Atlassian/Linear style. */
+  --vellum-shadow-kit: 0 1px 2px rgba(26, 24, 20, 0.06),
+    0 8px 24px rgba(26, 24, 20, 0.1);
+  /* Modal lift. */
+  --vellum-shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
