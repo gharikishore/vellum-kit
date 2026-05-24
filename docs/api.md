@@ -94,7 +94,46 @@ Use the utility when class composition is cleaner; use the CSS
 variable when you need an arbitrary inline style or a third-party
 component that takes a string.
 
-## Components
+## Components (v0.2)
 
-⏳ **v0.2** — Button, Lozenge, Card, ListRow, SummaryTile, Tabs,
-Banner, Field, Input, Eyebrow, IconBtn, ProgressBar, …
+All primitives import from `@local/vellum-kit/components`. They expect
+the Tailwind preset + default-theme.css to be wired (see README quick
+start). Helpers `cn`, `FOCUS_RING_BUTTON`, `FOCUS_RING_INPUT` are also
+exported for consumers building their own primitives that share the
+focus-ring discipline.
+
+| Primitive | Default usage | Key prop(s) |
+|---|---|---|
+| `<Button>` | `<Button kind="primary">Save</Button>` | `kind`: `primary` (ink fill) · `secondary` (card fill) · `subtle` (transparent) · `danger` (orange fill) |
+| `<IconButton>` | `<IconButton ariaLabel="More"><MoreHorizontal /></IconButton>` | `variant`: `outlined` (default) · `ghost`; `ariaLabel` required |
+| `<Lozenge>` | `<Lozenge tone="success">Shipped</Lozenge>` | `tone`: `success` · `warning` · `info` · `danger` · `muted`; `icon` slot |
+| `<Card>` | `<Card padded>…</Card>` | `padded`: applies p-5 |
+| `<Field>` | `<Field label="Email" hint="..."><Input/></Field>` | `label`, `hint`, `htmlFor`, `required` |
+| `<Input>` | `<Input placeholder="Search" />` | All native `<input>` props |
+| `<Textarea>` | `<Textarea rows={5} />` | Defaults to `rows=3`, `resize-y` |
+| `<Select>` | `<Select value="Q4">Q4 2026</Select>` | Display trigger only — pair with Radix/Headless for the dropdown |
+| `<ListRow>` | `<ListRow title="…" meta="…" trailing={<Lozenge/>} />` | `icon`, `title`, `meta`, `trailing`, `onAction`, `isLast` |
+| `<SummaryTile>` | `<SummaryTile label="Open" value={42} delta="+12%" tone="success" />` | `tone` shares Lozenge's tone vocabulary |
+| `<Tabs>` | `<Tabs items={tabs} activeId={id} onChange={setId} />` | WAI-ARIA keyboard nav (Arrow/Home/End) baked in |
+| `<Banner>` | `<Banner tone="warning" message="…" action={{label:'Fix', onClick}} />` | `tone` mirrors Lozenge; `role=alert` for warning/danger |
+| `<Crumb>` + `<CrumbSep>` | `<Crumb href="/x">Home</Crumb><CrumbSep/><Crumb>Detail</Crumb>` | `next/link`-backed; href omitted for the current segment |
+| `<Eyebrow>` | `<Eyebrow>Section</Eyebrow>` | Orange uppercase mono kicker |
+| `<StateFilterChips>` | `<StateFilterChips items={[…]} value={s} onChange={setS} />` | Generic `<K extends string>`; supports `pseudo: true` divider |
+| `<AsideActionButton>` | `<AsideActionButton tone="success">Approve</AsideActionButton>` | Mono-uppercase outline action chip for stacked verdict columns |
+| `<Composer>` | See specforge intake #919 + the source for the full prop list | Text composer with reason field + confirm/cancel |
+
+### Focus-ring helpers
+
+Apply the recipe matching your primitive's input/non-input nature:
+
+```tsx
+import { cn, FOCUS_RING_BUTTON, FOCUS_RING_INPUT } from "@local/vellum-kit/components";
+
+// Buttons, chips, tabs, lozenge actions
+<button className={cn("…", FOCUS_RING_BUTTON)}>…</button>
+
+// Inputs, selects, textareas
+<input className={cn("…", FOCUS_RING_INPUT)} />
+```
+
+Both use `:focus-visible` so mouse clicks don't trigger the ring.

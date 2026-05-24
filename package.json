@@ -1,6 +1,6 @@
 {
   "name": "@gharikishore/vellum-kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Vellum — specforge's cream + ink + orange design system. Color/typography/radius/shadow tokens + (in v1.x) UI primitives. Themable via --vellum-* CSS variables. Drop into any Next.js + Tailwind app.",
   "type": "module",
   "main": "./src/index.ts",
@@ -28,7 +28,9 @@
   "private": true,
   "peerDependencies": {
     "react": ">=18",
-    "tailwindcss": ">=3.4"
+    "tailwindcss": ">=3.4",
+    "next": ">=14",
+    "lucide-react": ">=0.300.0"
   },
   "devDependencies": {
     "@types/node": "^20",
