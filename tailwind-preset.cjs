@@ -82,8 +82,9 @@ const preset = {
         // Single canonical tracking for ALL small-uppercase mono labels
         // (eyebrows, kickers, lozenges, action chips, breadcrumbs).
         // See docs/design-history.md for the kicker/eyebrow reconciliation
-        // (specforge intake #922).
-        kicker: "0.18em",
+        // (specforge intake #922). Tightened 0.18 -> 0.10em in #1364 to match
+        // the homepage hero kicker treatment app-wide.
+        kicker: "0.10em",
       },
     },
   },
